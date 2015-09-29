@@ -1,0 +1,120 @@
+body{
+  margin: 0;
+}
+
+.AddJobComponent{
+  margin: 0 auto;
+
+  .JobNavComponent{
+    clear: both;
+    display: block;
+    height: 50px;
+    text-align: center;
+    .black-bar{
+      background: #525252;
+      width: 100%;
+      height: 5px;
+      margin-bottom: 5px;
+    }
+    .logo{
+      color: #053412;
+      float: left;
+      margin: 0 0 10px 20px;
+      height: 32px;
+      line-height: 32px;
+      img{
+      height: 32px;
+      width: 32px;
+      }
+      span{
+        margin-left: 0;
+        font-size: 20px;
+      }
+    }
+    span{
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+  .JobTipsComponent{
+    width: 100%;
+    min-width: 300px;
+    box-sizing: border-box;
+    padding: 15px;
+    border-width: 2px;
+    border-image: url('../images/images1/bg.png')  20% repeat;
+    .tips-box{
+    margin: 15px 0;
+    }
+
+    .bold{
+      font-weight: bold;
+    }
+  }
+  .JobFormComponent{
+    padding: 15px;
+    min-width: 300px;
+    width: 100%;
+    margin-right: 10px;
+    box-sizing: border-box;
+
+    form{
+      input{
+        display: block;
+        font-size: 15px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      textarea{
+        height: 60px;
+        display: block;
+        width: 100%;
+        border-color: #DFDFDF;
+        margin-bottom: 10px;
+      }
+      label{
+        font-weight: bold;
+      }
+      button{
+        float: right;
+        background: #3E9A48;
+        border: 1px solid #97C69E;
+        color: #EEF6C1;
+        border-radius: 4px;
+        padding: 4px;
+        font-size: 15px;
+      }
+    }
+  }
+}
+@media screen and(min-width: 399px){
+.AddJobComponent{
+    .JobNavComponent{
+      margin-bottom: 50px;
+    }
+  }
+}
+
+@media screen and(min-width: 537px){
+  .AddJobComponent{
+    .JobNavComponent{
+      .logo{
+        display: inline;
+        margin: 0;
+        float: none;
+      }
+    }
+  }
+}
+@media screen and(min-width: 800px){
+.AddJobComponent{
+  .JobNavComponent{
+    margin-bottom: 10px;
+  }
+  > div{
+    display: inline-block;
+    width: 50%;
+    }
+  }
+}

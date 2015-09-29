@@ -1,34 +1,36 @@
 body {
   margin: 0; }
 
+#nav .NavComponent {
+  clear: both;
+  display: block;
+  height: 50px;
+  text-align: center; }
+  #nav .NavComponent .black-bar {
+    background: #525252;
+    width: 100%;
+    height: 5px;
+    margin-bottom: 5px; }
+  #nav .NavComponent .logo {
+    color: #053412;
+    float: left;
+    margin: 0 0 10px 20px;
+    height: 32px; }
+    #nav .NavComponent .logo img {
+      height: 32px;
+      width: 32px; }
+    #nav .NavComponent .logo span {
+      margin-left: 0;
+      font-size: 20px; }
+  #nav .NavComponent a {
+    margin: 0 20px;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    color: #000000; }
+
 .AddJobComponent {
   margin: 0 auto; }
-  .AddJobComponent .JobNavComponent {
-    clear: both;
-    display: block;
-    height: 50px;
-    text-align: center; }
-    .AddJobComponent .JobNavComponent .black-bar {
-      background: #525252;
-      width: 100%;
-      height: 5px;
-      margin-bottom: 5px; }
-    .AddJobComponent .JobNavComponent .logo {
-      color: #053412;
-      float: left;
-      margin: 0 0 10px 20px;
-      height: 32px;
-      line-height: 32px; }
-      .AddJobComponent .JobNavComponent .logo img {
-        height: 32px;
-        width: 32px; }
-      .AddJobComponent .JobNavComponent .logo span {
-        margin-left: 0;
-        font-size: 20px; }
-    .AddJobComponent .JobNavComponent span {
-      margin: 0 20px;
-      font-weight: bold;
-      font-size: 14px; }
   .AddJobComponent .JobTipsComponent {
     width: 100%;
     min-width: 300px;
@@ -69,17 +71,17 @@ body {
       font-size: 15px; }
 
 @media screen and (min-width: 399px) {
-  .AddJobComponent .JobNavComponent {
+  #nav .NavComponent {
     margin-bottom: 50px; } }
 
 @media screen and (min-width: 537px) {
-  .AddJobComponent .JobNavComponent .logo {
+  #nav .NavComponent .logo {
     display: inline;
     margin: 0;
     float: none; } }
 
 @media screen and (min-width: 800px) {
-  .AddJobComponent .JobNavComponent {
+  #nav .NavComponent {
     margin-bottom: 10px; }
   .AddJobComponent > div {
     display: inline-block;

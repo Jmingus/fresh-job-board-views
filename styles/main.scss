@@ -1,11 +1,8 @@
 body{
   margin: 0;
 }
-
-.AddJobComponent{
-  margin: 0 auto;
-
-  .JobNavComponent{
+#nav{
+  .NavComponent{
     clear: both;
     display: block;
     height: 50px;
@@ -21,7 +18,6 @@ body{
       float: left;
       margin: 0 0 10px 20px;
       height: 32px;
-      line-height: 32px;
       img{
       height: 32px;
       width: 32px;
@@ -31,12 +27,18 @@ body{
         font-size: 20px;
       }
     }
-    span{
+    a{
       margin: 0 20px;
       font-weight: bold;
       font-size: 14px;
+      text-decoration: none;
+      color: #000000;
     }
   }
+}
+
+.AddJobComponent{
+  margin: 0 auto;
   .JobTipsComponent{
     width: 100%;
     min-width: 300px;
@@ -89,16 +91,16 @@ body{
   }
 }
 @media screen and(min-width: 399px){
-.AddJobComponent{
-    .JobNavComponent{
+  #nav{
+    .NavComponent{
       margin-bottom: 50px;
     }
   }
 }
 
 @media screen and(min-width: 537px){
-  .AddJobComponent{
-    .JobNavComponent{
+  #nav{
+    .NavComponent{
       .logo{
         display: inline;
         margin: 0;
@@ -108,10 +110,12 @@ body{
   }
 }
 @media screen and(min-width: 800px){
-.AddJobComponent{
-  .JobNavComponent{
+  #nav{
+  .NavComponent{
     margin-bottom: 10px;
   }
+}
+.AddJobComponent{
   > div{
     display: inline-block;
     width: 50%;

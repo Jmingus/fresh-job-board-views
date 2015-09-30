@@ -32533,13 +32533,14 @@ module.exports = require('./lib/React');
 'use strict';
 
 var Backbone = require('backbone');
-var TagsModel = require('../models/TagsModel');
+var JobListing = require('../models/JobListingModel');
 
 module.exports = Backbone.Collection.extend({
-  model: TagsModel
+  model: JobListing,
+  url: 'https://jmingus-server.herokuapp.com/collections/fresh-job'
 });
 
-},{"../models/TagsModel":172,"backbone":1}],161:[function(require,module,exports){
+},{"../models/JobListingModel":170,"backbone":1}],161:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32574,6 +32575,7 @@ var React = require('react');
 
 var JobListingComponent = require('./JobListingComponent');
 var AddJobComponent = require('./AddJobComponent');
+var JobListingCollection = require('../collections/JobListingCollection');
 
 module.exports = React.createClass({
   displayName: 'exports',
@@ -32586,6 +32588,8 @@ module.exports = React.createClass({
   },
   componentWillMount: function componentWillMount() {
     var self = this;
+    this.jobCollection = new JobListingCollection();
+    this.jobCollection.fetch();
 
     var Router = Backbone.Router.extend({
       routes: {
@@ -32613,7 +32617,7 @@ module.exports = React.createClass({
     if (currentState === 'employers') {
       pageComponent = React.createElement(AddJobComponent, null);
     } else if (currentState === 'jobs') {
-      pageComponent = React.createElement(JobListingComponent, null);
+      pageComponent = React.createElement(JobListingComponent, { collection: this.jobCollection });
     }
 
     return React.createElement(
@@ -32624,49 +32628,31 @@ module.exports = React.createClass({
   }
 });
 
-},{"./AddJobComponent":161,"./JobListingComponent":165,"backbone":1,"react":159}],163:[function(require,module,exports){
-'use strict';
+},{"../collections/JobListingCollection":160,"./AddJobComponent":161,"./JobListingComponent":165,"backbone":1,"react":159}],163:[function(require,module,exports){
+"use strict";
 
-var React = require('react');
+// var React = require('react');
 
-module.exports = React.createClass({
-  displayName: 'exports',
+// module.exports = React.createClass({
+//     render: function() {
+//         var backgroundImgUrl = {backgroundImage: 'url('+ this.props.model.get('background_image')+ ')'}
+//         return (
+//           <div className="CompanyInformationComponent">
+//             <h2>Featured Company</h2>
+//             <hr />
+//             <div className="companyLogo" style={backgroundImgUrl}>
+//               <img src={this.props.model.get('company_logo')} />
+//             </div>
+//             <div>
+//               <h1>{this.props.model.get('company_name')}</h1>
+//               <h3>{this.props.model.get('company_location')}</h3>
+//             </div>
+//           </div>
+//           )
+//       }
+//     })
 
-  render: function render() {
-    var backgroundImgUrl = { backgroundImage: 'url(' + this.props.model.get('background_image') + ')' };
-    return React.createElement(
-      'div',
-      { className: 'CompanyInformationComponent' },
-      React.createElement(
-        'h2',
-        null,
-        'Featured Company'
-      ),
-      React.createElement('hr', null),
-      React.createElement(
-        'div',
-        { className: 'companyLogo', style: backgroundImgUrl },
-        React.createElement('img', { src: this.props.model.get('company_logo') })
-      ),
-      React.createElement(
-        'div',
-        null,
-        React.createElement(
-          'h1',
-          null,
-          this.props.model.get('company_name')
-        ),
-        React.createElement(
-          'h3',
-          null,
-          this.props.model.get('company_location')
-        )
-      )
-    );
-  }
-});
-
-},{"react":159}],164:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32730,44 +32716,43 @@ module.exports = React.createClass({
 'use strict';
 
 var React = require('react');
-var CompanyModel = require('../models/CompanyModel');
-var JobListingModel = require('../models/JobListingModel');
-var TagsCollection = require('../collections/TagsModelCollection');
 
 var JobListingInfoComponent = require('./JobListingInfoComponent');
 var CompanyInformationComponent = require('./CompanyInformationComponent');
 
-var companyModel = new CompanyModel({
-  id: 1,
-  company_name: 'Origin',
-  company_logo: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSRmvhpgNAzhgZuSHCserIb59Tyl9wWByip74K9exF8mBVmmKA9Mg',
-  background_image: 'http://www.officialpsds.com/images/stocks/Background-flyer5_DXGFX-stock2536.jpg',
-  company_size: 600,
-  company_location: 'The Moon'
-});
+// var companyModel = new CompanyModel({
+//  id: 1,
+//  company_name: 'Origin',
+//  company_logo: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSRmvhpgNAzhgZuSHCserIb59Tyl9wWByip74K9exF8mBVmmKA9Mg',
+//  background_image: 'http://www.officialpsds.com/images/stocks/Background-flyer5_DXGFX-stock2536.jpg',
+//  company_size: 600,
+//  company_location: 'The Moon'
+// })
 
-var jobListingModel = new JobListingModel({
-  id: 1,
-  job_position: 'Moon Walker',
-  date_created: 'Tuesday',
-  employer: companyModel.get('company_name'),
-  job_location: companyModel.get('company_location'),
-  description: 'You walk on the moon, Accepting anyone!',
-  tags: tagsCollection
-});
+// var jobListingModel = new JobListingModel({
+// id: 1,
+// job_position: 'Moon Walker',
+// date_created: 'Tuesday',
+// employer: companyModel.get('company_name'),
+// job_location: companyModel.get('company_location'),
+// description: 'You walk on the moon, Accepting anyone!',
+// tags: tagsCollection
+// })
 
-var tagsCollection = new TagsCollection([{ id: 1, tag_name: 'Origin' }, { id: 2, tag_name: 'Space' }, { id: 3, tag_name: 'Walking' }, { id: 4, tag_name: 'Anyone' }, { id: 5, tag_name: 'Rockets' }]);
+// var tagsCollection = new TagsCollection([
+//   {id: 1, tag_name: 'Origin'},
+//   {id: 2, tag_name: 'Space'},
+//   {id: 3, tag_name: 'Walking'},
+//   {id: 4, tag_name: 'Anyone'},
+//   {id: 5, tag_name: 'Rockets'}
+//   ])
 
 module.exports = React.createClass({
   displayName: 'exports',
 
   render: function render() {
-    var tags = tagsCollection.map(function (model) {
-      return React.createElement(
-        'span',
-        { key: "tag" + model.get("id") },
-        model.get("tag_name")
-      );
+    var allJobs = this.props.collection.map(function (job) {
+      return React.createElement(JobListingInfoComponent, { job: job });
     });
     return React.createElement(
       'div',
@@ -32778,23 +32763,19 @@ module.exports = React.createClass({
         React.createElement(
           'div',
           { className: 'border-margin' },
-          React.createElement(JobListingInfoComponent, { model: jobListingModel, tags: tags })
+          allJobs
         )
       ),
       React.createElement(
         'div',
         { className: 'right-column' },
-        React.createElement(
-          'div',
-          { className: 'border-margin' },
-          React.createElement(CompanyInformationComponent, { model: companyModel })
-        )
+        React.createElement('div', { className: 'border-margin' })
       )
     );
   }
 });
 
-},{"../collections/TagsModelCollection":160,"../models/CompanyModel":170,"../models/JobListingModel":171,"./CompanyInformationComponent":163,"./JobListingInfoComponent":166,"react":159}],166:[function(require,module,exports){
+},{"./CompanyInformationComponent":163,"./JobListingInfoComponent":166,"react":159}],166:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -32809,11 +32790,11 @@ module.exports = React.createClass({
             React.createElement(
                 "div",
                 { className: "JobPosition" },
-                this.props.model.get('job_position'),
+                this.props.job.get('job_position'),
                 React.createElement(
                     "span",
                     { className: "datePosted" },
-                    this.props.model.get('date_created')
+                    this.props.job.get('date_created')
                 )
             ),
             React.createElement(
@@ -32822,17 +32803,16 @@ module.exports = React.createClass({
                 React.createElement(
                     "span",
                     { className: "Employer" },
-                    this.props.model.get('employer')
+                    this.props.job.get('employer')
                 ),
                 " • ",
-                this.props.model.get('job_location')
+                this.props.job.get('job_location')
             ),
             React.createElement(
                 "div",
                 { className: "Description" },
-                this.props.model.get('description')
+                this.props.job.get('description')
             ),
-            this.props.tags,
             React.createElement("hr", null)
         );
     }
@@ -32979,38 +32959,14 @@ var Backbone = require('backbone');
 module.exports = Backbone.Model.extend({
   defaults: {
     id: null,
-    company_name: '',
-    company_logo: '',
-    background_image: '',
-    company_size: 0,
-    company_location: ''
-  }
-});
-
-},{"backbone":1}],171:[function(require,module,exports){
-'use strict';
-
-var Backbone = require('backbone');
-module.exports = Backbone.Model.extend({
-  defaults: {
-    id: null,
     job_position: '',
     date_created: null,
     employer: '',
     job_location: '',
     description: ''
-  }
-});
-
-},{"backbone":1}],172:[function(require,module,exports){
-'use strict';
-
-var Backbone = require('backbone');
-module.exports = Backbone.Model.extend({
-  defaults: {
-    id: null,
-    tag_name: ''
-  }
+  },
+  idAttribute: '_id',
+  urlRoot: "https://jmingus-server.herokuapp.com/collections/fresh-job'"
 });
 
 },{"backbone":1}]},{},[169])

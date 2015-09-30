@@ -3,6 +3,7 @@ var React = require('react');
 
 var JobListingComponent = require('./JobListingComponent');
 var AddJobComponent = require('./AddJobComponent');
+var JobListingCollection = require('../collections/JobListingCollection');
 
 
 module.exports = React.createClass({
@@ -14,6 +15,8 @@ module.exports = React.createClass({
   },
   componentWillMount: function() {
     var self = this;
+    this.jobCollection = new JobListingCollection();
+    this.jobCollection.fetch();
 
     var Router = Backbone.Router.extend({
       routes: {
@@ -41,7 +44,7 @@ module.exports = React.createClass({
     if(currentState === 'employers'){
       pageComponent = <AddJobComponent />
     }else if(currentState === 'jobs'){
-      pageComponent = <JobListingComponent />
+      pageComponent = <JobListingComponent collection={this.jobCollection}/>
     }
 
     return (

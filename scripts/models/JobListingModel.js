@@ -7,5 +7,7 @@ module.exports = Backbone.Model.extend({
     employer: '',
     job_location: '',
     description: ''
-  }
+  },
+  idAttribute: '_id',
+  urlRoot: "https://jmingus-server.herokuapp.com/collections/fresh-job'"
 })

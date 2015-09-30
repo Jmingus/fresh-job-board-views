@@ -79,17 +79,19 @@ body {
 
 .JobListingComponent .CompanyInformationComponent {
   width: 500px;
-  text-align: center; }
-  .JobListingComponent .CompanyInformationComponent div {
-    height: 100%; }
-    .JobListingComponent .CompanyInformationComponent div img {
+  padding: 0 20px; }
+  .JobListingComponent .CompanyInformationComponent .companyLogo {
+    text-align: center;
+    height: 250px; }
+    .JobListingComponent .CompanyInformationComponent .companyLogo img {
       height: 125px;
       width: 125px;
-      margin-top: 50px; }
-    .JobListingComponent .CompanyInformationComponent div h1 {
-      color: #EAEAEA; }
-    .JobListingComponent .CompanyInformationComponent div h3 {
-      color: #EAEAEA; }
+      position: relative;
+      top: 190px; }
+  .JobListingComponent .CompanyInformationComponent div:last-child {
+    text-align: center;
+    padding: 72px 0 20px 0;
+    background: #FFFFFF; }
 
 .JobListingComponent .JobListingInfoComponent {
   padding: 0 20px; }

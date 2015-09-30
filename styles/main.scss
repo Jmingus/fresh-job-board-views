@@ -102,20 +102,21 @@ body{
 .JobListingComponent{
   .CompanyInformationComponent{
     width: 500px;
-    text-align: center;
-    div{
-      height: 100%;
+    padding: 0 20px;
+    .companyLogo{
+      text-align: center;
+      height: 250px;
       img{
         height: 125px;
         width: 125px;
-        margin-top: 50px;
+        position: relative;
+        top: 190px;
       }
-      h1{
-        color: #EAEAEA;
-      }
-      h3{
-        color: #EAEAEA;
-      }
+    }
+    div:last-child{
+      text-align: center;
+      padding: 72px 0 20px 0;
+      background: #FFFFFF;
     }
   }
   .JobListingInfoComponent{

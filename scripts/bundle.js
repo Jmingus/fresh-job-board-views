@@ -32587,8 +32587,12 @@ module.exports = React.createClass({
       React.createElement('hr', null),
       React.createElement(
         'div',
-        { style: backgroundImgUrl },
-        React.createElement('img', { src: this.props.model.get('company_logo') }),
+        { className: 'companyLogo', style: backgroundImgUrl },
+        React.createElement('img', { src: this.props.model.get('company_logo') })
+      ),
+      React.createElement(
+        'div',
+        null,
         React.createElement(
           'h1',
           null,

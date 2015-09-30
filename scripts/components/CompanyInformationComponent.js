@@ -7,8 +7,10 @@ module.exports = React.createClass({
           <div className="CompanyInformationComponent">
             <h2>Featured Company</h2>
             <hr />
-            <div style={backgroundImgUrl}>
+            <div className="companyLogo" style={backgroundImgUrl}>
               <img src={this.props.model.get('company_logo')} />
+            </div>
+            <div>
               <h1>{this.props.model.get('company_name')}</h1>
               <h3>{this.props.model.get('company_location')}</h3>
             </div>

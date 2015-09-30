@@ -70,6 +70,32 @@ body {
       padding: 4px;
       font-size: 15px; }
 
+.JobListingInfoComponent {
+  padding: 0 20px; }
+  .JobListingInfoComponent .JobPosition {
+    font-weight: bold;
+    font-size: 22px;
+    color: #1D4529;
+    margin-bottom: 10px; }
+    .JobListingInfoComponent .JobPosition .datePosted {
+      float: right;
+      font-size: 14px;
+      font-weight: none;
+      color: #A8A8A8; }
+  .JobListingInfoComponent .Employer {
+    font-weight: bold; }
+  .JobListingInfoComponent .Description {
+    color: #A8A8A8;
+    margin: 10px 0; }
+  .JobListingInfoComponent > span {
+    margin-right: 5px;
+    padding: 2px;
+    border: 1px solid #F0F2B7;
+    background: #F9FAE7; }
+  .JobListingInfoComponent hr {
+    color: #EAEAEA;
+    margin: 30px 0; }
+
 @media screen and (min-width: 399px) {
   #nav .NavComponent {
     margin-bottom: 50px; } }

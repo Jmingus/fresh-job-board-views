@@ -39,7 +39,7 @@ module.exports = React.createClass({
         return <span key={"tag"+model.get("id")}>{model.get("tag_name")}</span>
       });
         return (
-            <div>
+            <div className="JobListingComponent">
               <JobListingInfoComponent model={jobListingModel} tags={tags} />
               <CompanyInformationComponent model={companyModel} />
             </div>

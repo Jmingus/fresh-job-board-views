@@ -1,12 +1,14 @@
 body{
   margin: 0;
+  background-image: url('../images/images1/bg.png');
 }
 #nav{
   .NavComponent{
     clear: both;
     display: block;
-    height: 50px;
+    height: 60px;
     text-align: center;
+    background: #FFFFFF;
     .black-bar{
       background: #525252;
       width: 100%;
@@ -39,13 +41,17 @@ body{
 
 .AddJobComponent{
   margin: 0 auto;
+  > div {
+    border: 1em solid transparent;
+    box-sizing: border-box;
+  }
   .JobTipsComponent{
     width: 100%;
     min-width: 300px;
+    background: #FFFFFF;
+    padding: 1em;
+    box-shadow: 0 5px 5px 0 #ccc;
     box-sizing: border-box;
-    padding: 15px;
-    border-width: 2px;
-    border-image: url('../images/images1/bg.png')  20% repeat;
     .tips-box{
     margin: 15px 0;
     }
@@ -56,9 +62,11 @@ body{
   }
   .JobFormComponent{
     padding: 15px;
+    background: #FFFFFF;
     min-width: 300px;
     width: 100%;
-    margin-right: 10px;
+    box-shadow: 0 5px 5px 0 #ccc;
+    height: 26em;
     box-sizing: border-box;
 
     form{
@@ -90,57 +98,61 @@ body{
     }
   }
 }
-.CompanyInformationComponent{
-  width: 500px;
-  text-align: center;
-  div{
-    height: 100%;
-    img{
-      height: 125px;
-      width: 125px;
-      margin-top: 50px;
-    }
-    h1{
-      color: #EAEAEA;
-    }
-    h3{
-      color: #EAEAEA;
-    }
-  }
-}
-.JobListingInfoComponent{
-  padding: 0 20px;
-  .JobPosition{
-    font-weight: bold;
-    font-size: 22px;
-    color: #1D4529;
-    margin-bottom: 10px;
-    .datePosted{
-      float: right;
-      font-size: 14px;
-      font-weight: none;
-      color: #A8A8A8;
-    }
-  }
-  .Employer{
-    font-weight: bold;
-  }
-  .Description{
-    color: #A8A8A8;
-    margin: 10px 0;
-  }
-  > span{
-    margin-right: 5px;
-    padding: 2px;
-    border: 1px solid #F0F2B7;
-    background: #F9FAE7;
-  }
-  hr{
-    color: #EAEAEA;
-    margin: 30px 0;
 
+.JobListingComponent{
+  .CompanyInformationComponent{
+    width: 500px;
+    text-align: center;
+    div{
+      height: 100%;
+      img{
+        height: 125px;
+        width: 125px;
+        margin-top: 50px;
+      }
+      h1{
+        color: #EAEAEA;
+      }
+      h3{
+        color: #EAEAEA;
+      }
+    }
+  }
+  .JobListingInfoComponent{
+    padding: 0 20px;
+    .JobPosition{
+      font-weight: bold;
+      font-size: 22px;
+      color: #1D4529;
+      margin-bottom: 10px;
+      .datePosted{
+        float: right;
+        font-size: 14px;
+        font-weight: none;
+        color: #A8A8A8;
+      }
+    }
+    .Employer{
+      font-weight: bold;
+    }
+    .Description{
+      color: #A8A8A8;
+      margin: 10px 0;
+    }
+    > span{
+      margin-right: 5px;
+      padding: 2px;
+      border: 1px solid #F0F2B7;
+      background: #F9FAE7;
+    }
+    hr{
+      color: #EAEAEA;
+      margin: 30px 0;
+
+    }
   }
 }
+
 @media screen and(min-width: 399px){
   #nav{
     .NavComponent{
@@ -167,9 +179,15 @@ body{
   }
 }
 .AddJobComponent{
-  > div{
+  > div:first-child{
     display: inline-block;
-    width: 50%;
+    width: 70%;
+    vertical-align: top;
+    }
+  > div:last-child{
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
     }
   }
 }

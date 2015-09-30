@@ -32709,7 +32709,7 @@ module.exports = React.createClass({
     });
     return React.createElement(
       'div',
-      null,
+      { className: 'JobListingComponent' },
       React.createElement(JobListingInfoComponent, { model: jobListingModel, tags: tags }),
       React.createElement(CompanyInformationComponent, { model: companyModel })
     );

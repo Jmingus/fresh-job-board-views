@@ -1,11 +1,13 @@
 body {
-  margin: 0; }
+  margin: 0;
+  background-image: url("../images/images1/bg.png"); }
 
 #nav .NavComponent {
   clear: both;
   display: block;
-  height: 50px;
-  text-align: center; }
+  height: 60px;
+  text-align: center;
+  background: #FFFFFF; }
   #nav .NavComponent .black-bar {
     background: #525252;
     width: 100%;
@@ -31,22 +33,27 @@ body {
 
 .AddJobComponent {
   margin: 0 auto; }
+  .AddJobComponent > div {
+    border: 1em solid transparent;
+    box-sizing: border-box; }
   .AddJobComponent .JobTipsComponent {
     width: 100%;
     min-width: 300px;
-    box-sizing: border-box;
-    padding: 15px;
-    border-width: 2px;
-    border-image: url("../images/images1/bg.png") 20% repeat; }
+    background: #FFFFFF;
+    padding: 1em;
+    box-shadow: 0 5px 5px 0 #ccc;
+    box-sizing: border-box; }
     .AddJobComponent .JobTipsComponent .tips-box {
       margin: 15px 0; }
     .AddJobComponent .JobTipsComponent .bold {
       font-weight: bold; }
   .AddJobComponent .JobFormComponent {
     padding: 15px;
+    background: #FFFFFF;
     min-width: 300px;
     width: 100%;
-    margin-right: 10px;
+    box-shadow: 0 5px 5px 0 #ccc;
+    height: 26em;
     box-sizing: border-box; }
     .AddJobComponent .JobFormComponent form input {
       display: block;
@@ -70,43 +77,43 @@ body {
       padding: 4px;
       font-size: 15px; }
 
-.CompanyInformationComponent {
+.JobListingComponent .CompanyInformationComponent {
   width: 500px;
   text-align: center; }
-  .CompanyInformationComponent div {
+  .JobListingComponent .CompanyInformationComponent div {
     height: 100%; }
-    .CompanyInformationComponent div img {
+    .JobListingComponent .CompanyInformationComponent div img {
       height: 125px;
       width: 125px;
       margin-top: 50px; }
-    .CompanyInformationComponent div h1 {
+    .JobListingComponent .CompanyInformationComponent div h1 {
       color: #EAEAEA; }
-    .CompanyInformationComponent div h3 {
+    .JobListingComponent .CompanyInformationComponent div h3 {
       color: #EAEAEA; }
 
-.JobListingInfoComponent {
+.JobListingComponent .JobListingInfoComponent {
   padding: 0 20px; }
-  .JobListingInfoComponent .JobPosition {
+  .JobListingComponent .JobListingInfoComponent .JobPosition {
     font-weight: bold;
     font-size: 22px;
     color: #1D4529;
     margin-bottom: 10px; }
-    .JobListingInfoComponent .JobPosition .datePosted {
+    .JobListingComponent .JobListingInfoComponent .JobPosition .datePosted {
       float: right;
       font-size: 14px;
       font-weight: none;
       color: #A8A8A8; }
-  .JobListingInfoComponent .Employer {
+  .JobListingComponent .JobListingInfoComponent .Employer {
     font-weight: bold; }
-  .JobListingInfoComponent .Description {
+  .JobListingComponent .JobListingInfoComponent .Description {
     color: #A8A8A8;
     margin: 10px 0; }
-  .JobListingInfoComponent > span {
+  .JobListingComponent .JobListingInfoComponent > span {
     margin-right: 5px;
     padding: 2px;
     border: 1px solid #F0F2B7;
     background: #F9FAE7; }
-  .JobListingInfoComponent hr {
+  .JobListingComponent .JobListingInfoComponent hr {
     color: #EAEAEA;
     margin: 30px 0; }
 
@@ -123,6 +130,11 @@ body {
 @media screen and (min-width: 800px) {
   #nav .NavComponent {
     margin-bottom: 10px; }
-  .AddJobComponent > div {
+  .AddJobComponent > div:first-child {
     display: inline-block;
-    width: 50%; } }
+    width: 70%;
+    vertical-align: top; }
+  .AddJobComponent > div:last-child {
+    display: inline-block;
+    width: 30%;
+    vertical-align: top; } }

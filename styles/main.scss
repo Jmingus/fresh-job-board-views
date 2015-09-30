@@ -90,7 +90,24 @@ body{
     }
   }
 }
-
+.CompanyInformationComponent{
+  width: 500px;
+  text-align: center;
+  div{
+    height: 100%;
+    img{
+      height: 125px;
+      width: 125px;
+      margin-top: 50px;
+    }
+    h1{
+      color: #EAEAEA;
+    }
+    h3{
+      color: #EAEAEA;
+    }
+  }
+}
 .JobListingInfoComponent{
   padding: 0 20px;
   .JobPosition{

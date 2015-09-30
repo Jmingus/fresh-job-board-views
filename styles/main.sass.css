@@ -70,6 +70,20 @@ body {
       padding: 4px;
       font-size: 15px; }
 
+.CompanyInformationComponent {
+  width: 500px;
+  text-align: center; }
+  .CompanyInformationComponent div {
+    height: 100%; }
+    .CompanyInformationComponent div img {
+      height: 125px;
+      width: 125px;
+      margin-top: 50px; }
+    .CompanyInformationComponent div h1 {
+      color: #EAEAEA; }
+    .CompanyInformationComponent div h3 {
+      color: #EAEAEA; }
+
 .JobListingInfoComponent {
   padding: 0 20px; }
   .JobListingInfoComponent .JobPosition {

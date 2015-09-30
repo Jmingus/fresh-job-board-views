@@ -3,7 +3,8 @@ var CompanyModel = require('../models/CompanyModel');
 var JobListingModel = require('../models/JobListingModel');
 var TagsCollection = require('../collections/TagsModelCollection');
 
-var JobListingInfoComponent = require('./JobListingInfoComponent')
+var JobListingInfoComponent = require('./JobListingInfoComponent');
+var CompanyInformationComponent = require('./CompanyInformationComponent');
 
 var companyModel = new CompanyModel({
  id: 1,
@@ -40,6 +41,7 @@ module.exports = React.createClass({
         return (
             <div>
               <JobListingInfoComponent model={jobListingModel} tags={tags} />
+              <CompanyInformationComponent model={companyModel} />
             </div>
         );
     }

@@ -32539,7 +32539,7 @@ module.exports = Backbone.Collection.extend({
   model: TagsModel
 });
 
-},{"../models/TagsModel":170,"backbone":1}],161:[function(require,module,exports){
+},{"../models/TagsModel":171,"backbone":1}],161:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32566,7 +32566,45 @@ module.exports = React.createClass({
   }
 });
 
-},{"./JobFormComponent":162,"./JobTipsComponent":165,"react":159}],162:[function(require,module,exports){
+},{"./JobFormComponent":163,"./JobTipsComponent":166,"react":159}],162:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+
+module.exports = React.createClass({
+  displayName: 'exports',
+
+  render: function render() {
+    var backgroundImgUrl = { backgroundImage: 'url(' + this.props.model.get('background_image') + ')' };
+    return React.createElement(
+      'div',
+      { className: 'CompanyInformationComponent' },
+      React.createElement(
+        'h2',
+        null,
+        'Featured Company'
+      ),
+      React.createElement('hr', null),
+      React.createElement(
+        'div',
+        { style: backgroundImgUrl },
+        React.createElement('img', { src: this.props.model.get('company_logo') }),
+        React.createElement(
+          'h1',
+          null,
+          this.props.model.get('company_name')
+        ),
+        React.createElement(
+          'h3',
+          null,
+          this.props.model.get('company_location')
+        )
+      )
+    );
+  }
+});
+
+},{"react":159}],163:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32626,7 +32664,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"react":159}],163:[function(require,module,exports){
+},{"react":159}],164:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32635,6 +32673,7 @@ var JobListingModel = require('../models/JobListingModel');
 var TagsCollection = require('../collections/TagsModelCollection');
 
 var JobListingInfoComponent = require('./JobListingInfoComponent');
+var CompanyInformationComponent = require('./CompanyInformationComponent');
 
 var companyModel = new CompanyModel({
   id: 1,
@@ -32671,12 +32710,13 @@ module.exports = React.createClass({
     return React.createElement(
       'div',
       null,
-      React.createElement(JobListingInfoComponent, { model: jobListingModel, tags: tags })
+      React.createElement(JobListingInfoComponent, { model: jobListingModel, tags: tags }),
+      React.createElement(CompanyInformationComponent, { model: companyModel })
     );
   }
 });
 
-},{"../collections/TagsModelCollection":160,"../models/CompanyModel":168,"../models/JobListingModel":169,"./JobListingInfoComponent":164,"react":159}],164:[function(require,module,exports){
+},{"../collections/TagsModelCollection":160,"../models/CompanyModel":169,"../models/JobListingModel":170,"./CompanyInformationComponent":162,"./JobListingInfoComponent":165,"react":159}],165:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -32720,7 +32760,7 @@ module.exports = React.createClass({
     }
 });
 
-},{"react":159}],165:[function(require,module,exports){
+},{"react":159}],166:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -32792,7 +32832,7 @@ module.exports = React.createClass({
     }
 });
 
-},{"react":159}],166:[function(require,module,exports){
+},{"react":159}],167:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -32844,7 +32884,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"react":159}],167:[function(require,module,exports){
+},{"react":159}],168:[function(require,module,exports){
 'use strict';
 var Backbone = require('backbone');
 var React = require('react');
@@ -32874,7 +32914,7 @@ React.render(React.createElement(NavComponent, null), navElement);
 var app = new Router();
 Backbone.history.start();
 
-},{"./components/AddJobComponent":161,"./components/JobListingComponent":163,"./components/NavComponent":166,"backbone":1,"react":159}],168:[function(require,module,exports){
+},{"./components/AddJobComponent":161,"./components/JobListingComponent":164,"./components/NavComponent":167,"backbone":1,"react":159}],169:[function(require,module,exports){
 'use strict';
 
 var Backbone = require('backbone');
@@ -32889,7 +32929,7 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"backbone":1}],169:[function(require,module,exports){
+},{"backbone":1}],170:[function(require,module,exports){
 'use strict';
 
 var Backbone = require('backbone');
@@ -32904,7 +32944,7 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"backbone":1}],170:[function(require,module,exports){
+},{"backbone":1}],171:[function(require,module,exports){
 'use strict';
 
 var Backbone = require('backbone');
@@ -32915,7 +32955,7 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"backbone":1}]},{},[167])
+},{"backbone":1}]},{},[168])
 
 
 //# sourceMappingURL=bundle.js.map

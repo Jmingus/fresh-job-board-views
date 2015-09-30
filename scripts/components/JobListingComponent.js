@@ -40,8 +40,16 @@ module.exports = React.createClass({
       });
         return (
             <div className="JobListingComponent">
-              <JobListingInfoComponent model={jobListingModel} tags={tags} />
-              <CompanyInformationComponent model={companyModel} />
+              <div className="left-column">
+                <div className="border-margin">
+                  <JobListingInfoComponent model={jobListingModel} tags={tags} />
+                </div>
+              </div>
+              <div className="right-column">
+                <div className="border-margin">
+                  <CompanyInformationComponent model={companyModel} />
+                </div>
+              </div>
             </div>
         );
     }

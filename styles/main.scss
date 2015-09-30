@@ -2,6 +2,10 @@ body{
   margin: 0;
   background-image: url('../images/images1/bg.png');
 }
+.border-margin{
+  border: 1em solid transparent;
+  box-sizing: border-box;
+}
 #nav{
   .NavComponent{
     clear: both;
@@ -101,8 +105,11 @@ body{
 
 .JobListingComponent{
   .CompanyInformationComponent{
-    width: 500px;
-    padding: 0 20px;
+    background: #FFFFFF;
+    padding: 1em;
+    h2{
+      margin: 0;
+    }
     .companyLogo{
       text-align: center;
       height: 250px;
@@ -120,7 +127,8 @@ body{
     }
   }
   .JobListingInfoComponent{
-    padding: 0 20px;
+    background: #FFFFFF;
+    padding: 1em;
     .JobPosition{
       font-weight: bold;
       font-size: 22px;
@@ -174,12 +182,22 @@ body{
   }
 }
 @media screen and(min-width: 800px){
+  .left-column{
+  display: inline-block;
+  vertical-align: top;
+  width: 70%;
+  }
+  .right-column{
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+  }
   #nav{
   .NavComponent{
     margin-bottom: 10px;
+    }
   }
-}
-.AddJobComponent{
+  .AddJobComponent{
   > div:first-child{
     display: inline-block;
     width: 70%;

@@ -32537,7 +32537,7 @@ var JobListing = require('../models/JobListingModel');
 
 module.exports = Backbone.Collection.extend({
   model: JobListing,
-  url: 'https://jmingus-server.herokuapp.com/collections/fresh-job'
+  url: 'https://jmingus-server.herokuapp.com/collections/fresh-jobs'
 });
 
 },{"../models/JobListingModel":170,"backbone":1}],161:[function(require,module,exports){
@@ -32576,6 +32576,7 @@ var React = require('react');
 var JobListingComponent = require('./JobListingComponent');
 var AddJobComponent = require('./AddJobComponent');
 var JobListingCollection = require('../collections/JobListingCollection');
+var jobCollection = new JobListingCollection();
 
 module.exports = React.createClass({
   displayName: 'exports',
@@ -32588,8 +32589,6 @@ module.exports = React.createClass({
   },
   componentWillMount: function componentWillMount() {
     var self = this;
-    this.jobCollection = new JobListingCollection();
-    this.jobCollection.fetch();
 
     var Router = Backbone.Router.extend({
       routes: {
@@ -32602,6 +32601,7 @@ module.exports = React.createClass({
         });
       },
       jobsPage: function jobsPage() {
+        jobCollection.fetch();
         self.setState({
           pageName: 'jobs'
         });
@@ -32617,7 +32617,7 @@ module.exports = React.createClass({
     if (currentState === 'employers') {
       pageComponent = React.createElement(AddJobComponent, null);
     } else if (currentState === 'jobs') {
-      pageComponent = React.createElement(JobListingComponent, { collection: this.jobCollection });
+      pageComponent = React.createElement(JobListingComponent, { collection: jobCollection });
     }
 
     return React.createElement(
@@ -32656,10 +32656,15 @@ module.exports = React.createClass({
 'use strict';
 
 var React = require('react');
+var Backbone = require('backbone');
+var JobListingCollection = require('../collections/JobListingCollection');
 
 module.exports = React.createClass({
   displayName: 'exports',
 
+  componentWillMount: function componentWillMount() {
+    this.jobs = new JobListingCollection();
+  },
   render: function render() {
     return React.createElement(
       'div',
@@ -32671,36 +32676,36 @@ module.exports = React.createClass({
       ),
       React.createElement(
         'form',
-        null,
+        { onSubmit: this.post },
         React.createElement(
           'label',
           null,
           'Title',
-          React.createElement('input', { type: 'text' })
+          React.createElement('input', { ref: 'title', type: 'text' })
         ),
         React.createElement(
           'label',
           null,
           'Company Name',
-          React.createElement('input', { type: 'text' })
+          React.createElement('input', { ref: 'name', type: 'text' })
         ),
         React.createElement(
           'label',
           null,
           'Location',
-          React.createElement('input', { type: 'text' })
+          React.createElement('input', { ref: 'location', type: 'text' })
         ),
         React.createElement(
           'label',
           null,
           'Description',
-          React.createElement('textarea', null)
+          React.createElement('textarea', { ref: 'description' })
         ),
         React.createElement(
           'label',
           null,
           'Tags',
-          React.createElement('input', { type: 'text' })
+          React.createElement('input', { ref: 'tags', type: 'text' })
         ),
         React.createElement(
           'button',
@@ -32709,10 +32714,21 @@ module.exports = React.createClass({
         )
       )
     );
+  },
+  post: function post(e) {
+    e.preventDefault();
+    console.log('posted');
+    this.jobs.create({
+      job_position: this.refs.title.getDOMNode().value,
+      date_created: Date.now(),
+      employer: this.refs.name.getDOMNode().value,
+      job_location: this.refs.location.getDOMNode().value,
+      description: this.refs.description.getDOMNode().value
+    });
   }
 });
 
-},{"react":159}],165:[function(require,module,exports){
+},{"../collections/JobListingCollection":160,"backbone":1,"react":159}],165:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32720,39 +32736,18 @@ var React = require('react');
 var JobListingInfoComponent = require('./JobListingInfoComponent');
 var CompanyInformationComponent = require('./CompanyInformationComponent');
 
-// var companyModel = new CompanyModel({
-//  id: 1,
-//  company_name: 'Origin',
-//  company_logo: 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSRmvhpgNAzhgZuSHCserIb59Tyl9wWByip74K9exF8mBVmmKA9Mg',
-//  background_image: 'http://www.officialpsds.com/images/stocks/Background-flyer5_DXGFX-stock2536.jpg',
-//  company_size: 600,
-//  company_location: 'The Moon'
-// })
-
-// var jobListingModel = new JobListingModel({
-// id: 1,
-// job_position: 'Moon Walker',
-// date_created: 'Tuesday',
-// employer: companyModel.get('company_name'),
-// job_location: companyModel.get('company_location'),
-// description: 'You walk on the moon, Accepting anyone!',
-// tags: tagsCollection
-// })
-
-// var tagsCollection = new TagsCollection([
-//   {id: 1, tag_name: 'Origin'},
-//   {id: 2, tag_name: 'Space'},
-//   {id: 3, tag_name: 'Walking'},
-//   {id: 4, tag_name: 'Anyone'},
-//   {id: 5, tag_name: 'Rockets'}
-//   ])
-
 module.exports = React.createClass({
   displayName: 'exports',
 
+  componentDidMount: function componentDidMount() {
+    var self = this;
+    this.props.collection.on('sync', function () {
+      self.forceUpdate();
+    });
+  },
   render: function render() {
     var allJobs = this.props.collection.map(function (job) {
-      return React.createElement(JobListingInfoComponent, { job: job });
+      return React.createElement(JobListingInfoComponent, { job: job, key: job.cid });
     });
     return React.createElement(
       'div',
@@ -32966,7 +32961,7 @@ module.exports = Backbone.Model.extend({
     description: ''
   },
   idAttribute: '_id',
-  urlRoot: "https://jmingus-server.herokuapp.com/collections/fresh-job'"
+  urlRoot: "https://jmingus-server.herokuapp.com/collections/fresh-jobs"
 });
 
 },{"backbone":1}]},{},[169])

@@ -9,5 +9,5 @@ module.exports = Backbone.Model.extend({
     description: ''
   },
   idAttribute: '_id',
-  urlRoot: "https://jmingus-server.herokuapp.com/collections/fresh-job'"
+  urlRoot: "https://jmingus-server.herokuapp.com/collections/fresh-jobs"
 })

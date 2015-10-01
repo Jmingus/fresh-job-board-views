@@ -51,7 +51,6 @@ body{
   }
   .JobTipsComponent{
     width: 100%;
-    min-width: 300px;
     background: #FFFFFF;
     padding: 1em;
     box-shadow: 0 5px 5px 0 #ccc;
@@ -67,7 +66,6 @@ body{
   .JobFormComponent{
     padding: 15px;
     background: #FFFFFF;
-    min-width: 300px;
     width: 100%;
     box-shadow: 0 5px 5px 0 #ccc;
     height: 26em;
@@ -98,6 +96,7 @@ body{
         border-radius: 4px;
         padding: 4px;
         font-size: 15px;
+        cursor: pointer;
       }
     }
   }

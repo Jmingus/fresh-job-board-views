@@ -1,11 +1,14 @@
 var React = require('react');
 var Backbone = require('backbone');
 var JobListingCollection = require('../collections/JobListingCollection');
+var TagsCollection = require('../collections/TagsCollection');
+var JobsTagsCollection = require('../collections/JobsTagsCollection');
+var async = require('async');
+var jobsCollection = new JobListingCollection();
+var tagsCollection = new TagsCollection();
+var jobsTagsCollection = new JobsTagsCollection();
 
 module.exports = React.createClass({
-    componentWillMount: function() {
-        this.jobs = new JobListingCollection();
-    },
     render: function () {
         return (
           <div className="JobFormComponent">
@@ -22,14 +25,61 @@ module.exports = React.createClass({
         );
     },
     post: function(e){
+      var self = this
+      var newJob = null;
+      var newTagArray = null;
       e.preventDefault()
-      console.log('posted')
-      this.jobs.create({
-        job_position: this.refs.title.getDOMNode().value,
-        date_created: Date.now(),
-        employer: this.refs.name.getDOMNode().value,
-        job_location: this.refs.location.getDOMNode().value,
-        description: this.refs.description.getDOMNode().value
-      })
+      async.series([
+        function(callback){
+          console.log('start saving job');
+          newJob = jobsCollection.create({
+            job_position: self.refs.title.getDOMNode().value,
+            date_created: Date.now(),
+            employer: self.refs.name.getDOMNode().value,
+            job_location: self.refs.location.getDOMNode().value,
+            description: self.refs.description.getDOMNode().value
+          },{
+            success: function() {
+              callback(null);
+            },
+            error: function(err) {
+              console.log('jobs error', err);
+            }
+          });
+        },
+        function(callback){
+          console.log('start saving tags');
+          var alltags = self.refs.tags.getDOMNode().value.split(" ")
+          async.map(
+            alltags,
+            function(item, callback){
+              var newTag = tagsCollection.create({
+                tag_name: item
+              },{
+              success: function(){
+                callback(null, newTag.id)
+              },
+              error: function(err) {
+                console.log('tags error', err)
+              }
+            });
+            },
+            function(err, data) {
+              newTagArray = data
+              callback(null)
+            }
+          )
+        },
+        function(callback){
+          console.log('start saving jobtags')
+          jobsTagsCollection.create({
+            job_id: newJob.id,
+            tag_ids: newTagArray
+          },{success: function(){
+            console.log('done')
+            callback(null)
+          }})
+        }
+      ]);
     }
 });

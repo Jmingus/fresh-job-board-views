@@ -4,7 +4,7 @@ module.exports = Backbone.Model.extend({
     defaults: {
       id: null,
       job_id: null,
-      tag_id: null
+      tag_ids: null
     },
     urlRoot: 'https://jmingus-server.herokuapp.com/collections/jobstags'
 })
